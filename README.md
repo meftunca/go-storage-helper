@@ -51,46 +51,46 @@ The following parameters can be passed as query parameters to the API. Only the 
 ## Example Requests
 
 ### 1. **Convert Video to MP4**
-```bash
+```
 GET http://localhost:3000/convert?input=input.mp4&format=mp4&width=1280&height=720&fps=30&bitrate=2M&crf=23
 ```
 **Response:**
 
 
-```bash   {    "message": "Conversion successful",    "outputFile": "./output/output.mp4",    "warnings": []  }   ```
+```   {    "message": "Conversion successful",    "outputFile": "./output/output.mp4",    "warnings": []  }   ```
 
 ### 2. **Convert Image to WebP**
 
 
 
 
-```json    GET http://localhost:3000/convert?input=input.jpg&format=webp&width=800&height=600&quality=90   ```
+```    GET http://localhost:3000/convert?input=input.jpg&format=webp&width=800&height=600&quality=90   ```
 
 **Response:**
 
 
 
-```json   {    "message": "Conversion successful",    "outputFile": "./output/output.webp",    "warnings": []  } ```
+```   {    "message": "Conversion successful",    "outputFile": "./output/output.webp",    "warnings": []  } ```
 
 ### 3. **Create GIF from Video**
 
  
 
-```bash   GET http://localhost:3000/convert?input=input.mp4&format=gif&width=320&height=240&fps=15&start=10&end=20 ```
+```   GET http://localhost:3000/convert?input=input.mp4&format=gif&width=320&height=240&fps=15&start=10&end=20 ```
 
 **Response:**
 
-```json    {    "message": "Conversion successful",    "outputFile": "./output/output.gif",    "warnings": []  } ```
+```    {    "message": "Conversion successful",    "outputFile": "./output/output.gif",    "warnings": []  } ```
 
 ### 4. **Convert Image with Video-Specific Parameters**
 
 bashCopy
 
-```bash   GET http://localhost:3000/convert?input=input.jpg&format=webp&width=800&height=600&fps=30&bitrate=2M&crf=23   ```
+```   GET http://localhost:3000/convert?input=input.jpg&format=webp&width=800&height=600&fps=30&bitrate=2M&crf=23   ```
 
 **Response:**
 
-  ```json {    "message": "Conversion successful",    "outputFile": "./output/output.webp",    "warnings": [      "fps parameter is ignored for images",      "bitrate parameter is ignored for images",      "crf parameter is ignored for images"    ]  }   `
+  ``` {    "message": "Conversion successful",    "outputFile": "./output/output.webp",    "warnings": [      "fps parameter is ignored for images",      "bitrate parameter is ignored for images",      "crf parameter is ignored for images"    ]  }   ```
 
 Error Messages
 --------------
