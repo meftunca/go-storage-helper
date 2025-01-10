@@ -95,9 +95,9 @@ bashCopy
 Error Messages
 --------------
 
-*   jsonCopy{ "error": "Input file does not exist"}
+*   `{ "error": "Input file does not exist"}`
     
-*   jsonCopy{ "error": "ffmpeg error: "}
+*   `{ "error": "ffmpeg error: "}`
     
 
 Installation and Usage
@@ -105,9 +105,9 @@ Installation and Usage
 
 1.  **Install FFmpeg**: The API uses the FFmpeg library. Ensure FFmpeg is installed on your system.
     
-    *   bashCopysudo apt install ffmpeg
+    *   `sudo apt install ffmpeg`
         
-2.  bashCopygo run main.go
+2.  `go run main.go`
     
 3.  **Use the API**:
     
