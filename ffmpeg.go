@@ -122,6 +122,11 @@ func (mc *MediaConverter) Resize(width, height int) *MediaConverter {
 	return mc
 }
 
+func (mc *MediaConverter) ResizeScale(scale int) *MediaConverter {
+	mc.options.ResizeScale = scale
+	return mc
+}
+
 // Crop, medyayı kırpar.
 func (mc *MediaConverter) Crop(dimensions string) *MediaConverter {
 	mc.options.Crop = dimensions
@@ -172,9 +177,9 @@ func (mc *MediaConverter) ExtractFrame(time string) *MediaConverter {
 }
 
 // Convert, medya dosyasını dönüştürür ve kaydeder.
-func (mc *MediaConverter) Convert(outputDir string) (string, error) {
+func (mc *MediaConverter) Convert(outputDir string, outPutFileName string) (string, error) {
 	// Çıktı dosyasının yolunu oluştur
-	outputFile := filepath.Join(outputDir, fmt.Sprintf("output.%s", mc.getOutputExtension()))
+	outputFile := filepath.Join(outputDir, fmt.Sprintf("%s.%s", outPutFileName, mc.getOutputExtension()))
 
 	// FFmpeg komutunu oluştur ve çalıştır
 	args := mc.buildFFmpegArgs(outputFile)
@@ -188,9 +193,9 @@ func (mc *MediaConverter) Convert(outputDir string) (string, error) {
 }
 
 // ToGIF, videoyu GIF'e dönüştürür.
-func (mc *MediaConverter) ToGIF(outputDir string) (string, error) {
+func (mc *MediaConverter) ToGIF(outputDir, outPutFileName string) (string, error) {
 	// Çıktı dosyasının yolunu oluştur
-	outputFile := filepath.Join(outputDir, "output.gif")
+	outputFile := filepath.Join(outputDir, fmt.Sprintf("%s.gif", outPutFileName))
 
 	// FFmpeg komutunu oluştur
 	args := mc.buildGIFArgs(outputFile)
@@ -230,7 +235,9 @@ func (mc *MediaConverter) buildFFmpegArgs(outputFile string) []string {
 	if mc.options.FrameTime != "" {
 		args = append(args, "-ss", mc.options.FrameTime, "-vframes", "1")
 	}
-
+	if mc.options.ResizeScale > 0 {
+		args = append(args, "-vf", fmt.Sprintf("scale=iw*%d/100:ih*%d/100", mc.options.ResizeScale, mc.options.ResizeScale))
+	}
 	// Boyutlandırma ve kırpma
 	if mc.options.Width > 0 || mc.options.Height > 0 {
 		args = append(args, "-vf", fmt.Sprintf("scale=%d:%d", mc.options.Width, mc.options.Height))
