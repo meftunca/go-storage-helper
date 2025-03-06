@@ -6,8 +6,8 @@ import (
 	"testing"
 )
 
-var inputFile = "/Users/mapletechnologies/go-workspace/src/github.com/meftunca/go-ffmpeg-helper/TestData/huge.jpg"
-var outputFilePath = "/Users/mapletechnologies/go-workspace/src/github.com/meftunca/go-ffmpeg-helper/TestData/output"
+var inputFile = "~/go-workspace/src/github.com/meftunca/go-ffmpeg-helper/TestData/huge.jpg"
+var outputFilePath = "~/go-workspace/src/github.com/meftunca/go-ffmpeg-helper/TestData/output"
 
 func TestResizeImage(t *testing.T) {
 	// Giriş dosyası
